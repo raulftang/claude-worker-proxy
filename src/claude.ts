@@ -21,8 +21,8 @@ export class impl implements provider.Provider {
         const finalUrl = utils.buildUrl(baseUrl, 'v1/messages')
 
         const headers = new Headers(request.headers)
-        headers.set('authorization', `${apiKey}`)
-        headers.set('Content-Type', 'application/json')
+        // headers.set('authorization', `${apiKey}`)
+        // headers.set('Content-Type', 'application/json')
 
         return new Request(finalUrl, {
             method: 'POST',
