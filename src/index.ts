@@ -38,7 +38,10 @@ async function handle(request: Request): Promise<Response> {
 
     const apiKey = request.headers.get('x-api-key')
     if (!apiKey) {
-        return new Response('Missing x-api-key header', { status: 401 })
+        const apiKey = request.headers.get('authorization')
+        if (!apiKey) {
+            return new Response('Missing x-api-key/authorization header', { status: 401 })
+        }
     }
 
     let provider: provider.Provider
