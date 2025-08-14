@@ -18,13 +18,13 @@ export class impl implements provider.Provider {
     async convertToProviderRequest(request: Request, baseUrl: string, apiKey: string): Promise<Request> {
         const claudeRequest = (await request.json()) as types.ClaudeRequest
 
-        const finalUrl = utils.buildUrl(baseUrl, 'v1/messages')
+        // const finalUrl = utils.buildUrl(baseUrl, 'v1/messages')
 
         const headers = new Headers(request.headers)
         headers.set('x-api-key', `${apiKey}`)
         headers.set('Content-Type', 'application/json')
 
-        return new Request(finalUrl, {
+        return new Request(baseUrl, {
             method: 'POST',
             headers,
             body: JSON.stringify(claudeRequest)
