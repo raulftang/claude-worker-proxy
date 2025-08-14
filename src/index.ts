@@ -53,7 +53,7 @@ async function handle(request: Request): Promise<Response> {
             provider = new claude.impl()
             break
         default:
-            return new Response('Unsupported type', { status: 400 })
+            return new Response('Unsupported type ${typeParam}', { status: 400 })
     }
 
     const providerRequest = await provider.convertToProviderRequest(request.clone(), baseUrl, apiKey)
